@@ -1,0 +1,14 @@
+# npm
+node_modules/
+npm-debug.log
+lerna-debug.log
+
+# builds
+dist/
+
+# IDEs
+# .vscode/
+jsconfig.json
+.idea/
+
+.env

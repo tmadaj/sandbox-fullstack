@@ -1,0 +1,528 @@
+{
+	"info": {
+		"_postman_id": "4955b4a1-2928-47ff-a475-425ca0720d9a",
+		"name": "Restaurant App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tomas Regular\",\n    \"email\": \"regular@b.cd\",\n    \"role\": \"regular\",\n    \"password\": \"qwertyui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/user/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login regular",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"regular@b.cd\",\n    \"password\": \"qwertyui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/user/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login owner",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"owner@b.cd\",\n    \"password\": \"qwertyui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/user/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@b.cd\",\n    \"password\": \"qwertyui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/user/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "restaurant",
+			"item": [
+				{
+					"name": "new",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{owner1_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Noma\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{regular1_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "min rating",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{regular1_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant?minRating=4",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "minRating",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "owned",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{owner2_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant?own=1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "own",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWM4MDg5YTU2ZGY1MzJhN2M3Yjk2YjciLCJpYXQiOjE1OTAxODAwMzB9.UIBF9u7vvRrZc4GKIWgfhKzTJkEc36b-gzow_grb2c4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant/5ec97783ad2c012d1c3892d7",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"5ec97783ad2c012d1c3892d7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWM4MDg5YTU2ZGY1MzJhN2M3Yjk2YjciLCJpYXQiOjE1OTAxODAwMzB9.UIBF9u7vvRrZc4GKIWgfhKzTJkEc36b-gzow_grb2c4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant/5ec97783ad2c012d1c3892d7",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"5ec97783ad2c012d1c3892d7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{owner2_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Noma 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/restaurant/5eccea69c486ee3b0c1df29c",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"restaurant",
+								"5eccea69c486ee3b0c1df29c"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "review",
+			"item": [
+				{
+					"name": "new",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{regular1_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"restaurantId\": \"5ecceb1706e8a8582c242636\",\n\t\"rating\": 5,\n\t\"comment\": \"Best thai in the world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/review",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{regular2_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/review/5eccf9025c531110bcb7be1d",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"review",
+								"5eccf9025c531110bcb7be1d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reply",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{regular1_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"restaurantId\": \"5ecceb1706e8a8582c242636\",\n\t\"rating\": 5,\n\t\"comment\": \"Best thai in the world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/review",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{regular1_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/review",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "of one restaurant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{regular1_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/review?restaurantId=5ecceb2106e8a8582c242637",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"review"
+							],
+							"query": [
+								{
+									"key": "restaurantId",
+									"value": "5ecceb2106e8a8582c242637"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pending reply",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{owner1_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/review?pendingReply=1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"review"
+							],
+							"query": [
+								{
+									"key": "pendingReply",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"protocolProfileBehavior": {}
+}
